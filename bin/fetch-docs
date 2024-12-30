@@ -1,0 +1,51 @@
+#!/usr/bin/env php
+<?php
+
+use ApiPlatform\HypermediaClient\ApiPlatformHypermediaClientBundle;
+use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\Console\Application;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\HttpKernel\Kernel as BaseKernel;
+
+require_once dirname(__DIR__).'/vendor/autoload.php';
+
+$kernel = new class($_SERVER['APP_ENV'] ?? 'prod', (bool) ($_SERVER['APP_DEBUG'] ?? false), $argv[1] ?? 'https://demo.api-platform.com') extends BaseKernel {
+    private string $baseUri;
+
+    public function __construct(string $env, bool $debug, string $baseUri)
+    {
+        parent::__construct($env, $debug);
+        $this->baseUri = $baseUri;
+    }
+
+    public function registerBundles(): array
+    {
+        return [new ApiPlatformHypermediaClientBundle()];
+    }
+
+    public function registerContainerConfiguration(LoaderInterface $loader): void
+    {
+        $loader->load(function (ContainerBuilder $container) {
+            $container->loadFromExtension('api_platform_hypermedia_client', [
+                'base_uri' => $this->baseUri,
+                'namespace' => '\\MyApp\\ApiResource',
+                'directory' => 'src/',
+            ]);
+        });
+    }
+
+    public function getCacheDir(): string
+    {
+        return $this->getProjectDir().'/var/cache/'.md5($this->baseUri);
+    }
+};
+
+$kernel->boot();
+
+$application = new Application('Hypermedia Client php generator.', '1.0.0');
+/** @var Symfony\Component\Console\Command\Command */
+$command = $kernel->getContainer()->get('api_platform.hypermedia_client.fetch_documentation_command');
+$application->add($command);
+$application->setDefaultCommand($command->getName(), true);
+
+return $application->run();

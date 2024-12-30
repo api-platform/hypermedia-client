@@ -1,0 +1,7 @@
+.php-cs-fixer.cache
+.phpunit.cache
+vendor
+var
+tools
+.phive
+bin/fetch-docs.phar

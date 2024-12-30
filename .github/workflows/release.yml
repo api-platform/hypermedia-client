@@ -1,0 +1,49 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  box:
+    name: Box
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        php:
+          - '8.4'
+      fail-fast: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: box
+      - name: Get composer cache directory
+        id: composercache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.composercache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+          restore-keys: ${{ runner.os }}-composer-
+      - name: Install project dependencies
+        run: composer install
+        continue-on-error: true
+      - name: Run Box
+        run: |
+          box compile
+      - name: Set output
+        id: vars
+        run: echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
+      - name: Release
+        run: gh release create ${{ steps.vars.outputs.tag }} --generate-notes bin/fetch-docs.phar
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
