@@ -35,7 +35,7 @@ $book->patchBook();
 
 Each resource is created as a PHP class with documented properties and HTTP operations:
 
-```
+```php
 # demo/ApiResource/Book.php
 <?php
 
