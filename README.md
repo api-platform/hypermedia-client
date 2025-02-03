@@ -14,7 +14,7 @@ Or [download the latest release](https://github.com/api-platform/hypermedia-clie
 ## Usage
 
 ```console
-fetch-docs https://demo.api-platform.com/docs -vvv --namespace '\App' --directory demo/
+fetch-docs https://pr-500-demo.api-platform.com/docs -vvv --namespace '\App' --directory demo/
 ```
 
 Fetch the documentation and create resource classes inside the `demo` directory.
