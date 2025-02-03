@@ -250,7 +250,7 @@ class ClassMetadataFactory
             return 'null';
         }
 
-        if ('Collection' === $rdfType) {
+        if ('Collection' === $rdfType || 'hydra:Collection' === $rdfType) {
             return '\\'.Collection::class.'<'.$currentClassName.'>';
         }
 
