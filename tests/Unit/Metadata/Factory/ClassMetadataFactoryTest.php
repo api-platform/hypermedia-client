@@ -149,7 +149,8 @@ class ClassMetadataFactoryTest extends TestCase
                     input: '?array<string, mixed>',
                     inputType: '\\App\\ApiResource\\Author',
                     uri: null,
-                    headers: ['content-type' => 'application/merge-patch+json']
+                    headers: ['content-type' => 'application/merge-patch+json'],
+                    description: 'Updates the Author resource.'
                 ),
             ],
             attributes: [

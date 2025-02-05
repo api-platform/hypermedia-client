@@ -81,7 +81,8 @@ class ClassMetadataFactory
                     output: $this->getPhpType($operation->returns ?? null, $namespace, $classes, $fqdn),
                     method: $operation->method ?? 'GET',
                     headers: $headers ?: null,
-                    uri: 'Entrypoint' === $id ? $docs->entrypoint : null
+                    uri: 'Entrypoint' === $id ? $docs->entrypoint : null,
+                    description: $operation->description ?? null
                 );
             }
         }
@@ -184,7 +185,8 @@ class ClassMetadataFactory
                             inputType: $this->getPhpType($operation->expects ?? null, $namespace, $classes, $fqdn, true),
                             output: $this->getPhpType($operation->returns ?? null, $namespace, $classes, $fqdn),
                             method: $operation->method ?? 'GET',
-                            uri: $value
+                            uri: $value,
+                            description: $operation->description ?? null
                         );
                     }
                 }

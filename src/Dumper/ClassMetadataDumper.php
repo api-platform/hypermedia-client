@@ -31,7 +31,7 @@ namespace {$classMetadata->namespace};
 
         foreach ($classMetadata->methods as $key => $p) {
             $input = $p->input;
-            $t .= ' * @method '.$p->output.' '.$key.'('.($input ? "$input \$options = null" : '').')'.PHP_EOL;
+            $t .= ' * @method '.$p->output.' '.$key.'('.($input ? "$input \$options = null" : '').') '.($p->description ?? '').PHP_EOL;
         }
 
         $t .= ' */'.PHP_EOL;

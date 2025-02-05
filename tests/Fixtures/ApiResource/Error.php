@@ -29,7 +29,7 @@ namespace MyApp\ApiResource;
  * @property string $description
  * @property mixed  $previous
  *
- * @method \MyApp\ApiResource\Error getError(?array<string, mixed> $options = null)
+ * @method \MyApp\ApiResource\Error getError(?array<string, mixed> $options = null) Retrieves a Error resource.
  */
 #[\ApiPlatform\HypermediaClient\Link(
     name: 'getError',
