@@ -17,11 +17,11 @@ namespace MyApp\ApiResource;
  * @property \ApiPlatform\HypermediaClient\Link<Author>[] $authors
  * @property \ApiPlatform\HypermediaClient\Link<Author>   $author
  *
- * @method \MyApp\ApiResource\Book                                           getBook(?array<string, mixed> $options = null)
- * @method \MyApp\ApiResource\Book                                           patchBook(?array<string, mixed> $options = null)
- * @method null                                                              deleteBook(?array<string, mixed> $options = null)
- * @method \ApiPlatform\HypermediaClient\Collection<\MyApp\ApiResource\Book> getBookCollection(?array<string, mixed> $options = null)
- * @method \MyApp\ApiResource\Book                                           postBook(?array<string, mixed> $options = null)
+ * @method \MyApp\ApiResource\Book                                           getBook(?array<string, mixed> $options = null)           Retrieves a Book resource.
+ * @method \MyApp\ApiResource\Book                                           patchBook(?array<string, mixed> $options = null)         Updates the Book resource.
+ * @method null                                                              deleteBook(?array<string, mixed> $options = null)        Deletes the Book resource.
+ * @method \ApiPlatform\HypermediaClient\Collection<\MyApp\ApiResource\Book> getBookCollection(?array<string, mixed> $options = null) Retrieves the collection of Book resources.
+ * @method \MyApp\ApiResource\Book                                           postBook(?array<string, mixed> $options = null)          Creates a Book resource.
  */
 #[\ApiPlatform\HypermediaClient\Link(
     name: 'getBook',

@@ -31,7 +31,7 @@ namespace MyApp\ApiResource;
  * @property mixed      $trace
  * @property mixed      $previous
  *
- * @method \MyApp\ApiResource\ConstraintViolation getConstraintViolation(?array<string, mixed> $options = null)
+ * @method \MyApp\ApiResource\ConstraintViolation getConstraintViolation(?array<string, mixed> $options = null) Retrieves a ConstraintViolation resource.
  */
 #[\ApiPlatform\HypermediaClient\Link(
     name: 'getConstraintViolation',

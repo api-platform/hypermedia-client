@@ -17,7 +17,7 @@ namespace MyApp\ApiResource;
  * @property \ApiPlatform\HypermediaClient\Link<\ApiPlatform\HypermediaClient\Collection<Author>> $author
  * @property \ApiPlatform\HypermediaClient\Link<\ApiPlatform\HypermediaClient\Collection<Book>>   $book
  *
- * @method \MyApp\ApiResource\Entrypoint index(?array<string, mixed> $options = null)
+ * @method \MyApp\ApiResource\Entrypoint index(?array<string, mixed> $options = null) The API Entrypoint.
  */
 #[\ApiPlatform\HypermediaClient\Link(
     name: 'index',

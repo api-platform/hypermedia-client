@@ -18,11 +18,11 @@ namespace MyApp\ApiResource;
  * @property string             $familyName
  * @property \DateTimeImmutable $birthDate
  *
- * @method \MyApp\ApiResource\Author                                           getAuthor(?array<string, mixed> $options = null)
- * @method \MyApp\ApiResource\Author                                           patchAuthor(?array<string, mixed> $options = null)
- * @method null                                                                deleteAuthor(?array<string, mixed> $options = null)
- * @method \ApiPlatform\HypermediaClient\Collection<\MyApp\ApiResource\Author> getAuthorCollection(?array<string, mixed> $options = null)
- * @method \MyApp\ApiResource\Author                                           postAuthor(?array<string, mixed> $options = null)
+ * @method \MyApp\ApiResource\Author                                           getAuthor(?array<string, mixed> $options = null)           Retrieves a Author resource.
+ * @method \MyApp\ApiResource\Author                                           patchAuthor(?array<string, mixed> $options = null)         Updates the Author resource.
+ * @method null                                                                deleteAuthor(?array<string, mixed> $options = null)        Deletes the Author resource.
+ * @method \ApiPlatform\HypermediaClient\Collection<\MyApp\ApiResource\Author> getAuthorCollection(?array<string, mixed> $options = null) Retrieves the collection of Author resources.
+ * @method \MyApp\ApiResource\Author                                           postAuthor(?array<string, mixed> $options = null)          Creates a Author resource.
  */
 #[\ApiPlatform\HypermediaClient\Link(
     name: 'getAuthor',

@@ -23,6 +23,7 @@ final class MethodMetadata
         public readonly ?string $inputType = null,
         public readonly ?string $uri = null,
         public readonly ?array $headers = [],
+        public readonly ?string $description = null,
     ) {
     }
 }
